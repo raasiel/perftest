@@ -8,41 +8,41 @@
     files: [{
         verb: "POST",
         apistem: "issuers",
-        file: "[$APPDIR$]/data/sqldump/issuer.rpt",
+        file: "[$DATADIR$]/issuer.rpt",
         template: "[$APPDIR$]/data/reqtemplate/issuer.mapping.js",
         returns: "issuer_id", 
         active:true
     }, {
         verb: "POST",
         apistem: "funds",
-        file: "[$APPDIR$]/data/sqldump/fund.rpt",
+        file: "[$DATADIR$]/fund.rpt",
         template: "[$APPDIR$]/data/reqtemplate/fund.mapping.js",
         active:false
     }, {
         verb: "POST",
         apistem: "securityclasses",
-        file: "[$APPDIR$]/data/sqldump/security_class.rpt",
+        file: "[$DATADIR$]/security_class.rpt",
         template: "[$APPDIR$]/data/reqtemplate/security_class.mapping.js", 
         active:false
     }, {
         verb: "POST",
         apistem: "securities",
-        file: "[$APPDIR$]/data/sqldump/security.rpt",
+        file: "[$DATADIR$]/security.rpt",
         template: "[$APPDIR$]/data/reqtemplate/security.mapping.js"
     }, {
         verb: "POST",
         apistem: "campaigns",
-        file: "[$APPDIR$]/data/sqldump/campaign.rpt",
+        file: "[$DATADIR$]/campaign.rpt",
         template: "[$APPDIR$]/data/reqtemplate/campaign.mapping.js"
     }, {
         verb: "POST",
         apistem: "proposals",
-        file: "[$APPDIR$]/data/sqldump/proposal.rpt",
+        file: "[$DATADIR$]/proposal.rpt",
         template: "[$APPDIR$]/data/reqtemplate/proposal.mapping.js"
     }, {
         verb: "POST",
         apistem: "batchSecurityProposalMapping",
-        file: "[$APPDIR$]/data/sqldump/security_proposal_mapping.rpt",
+        file: "[$DATADIR$]/security_proposal_mapping.rpt",
         template: "[$APPDIR$]/data/reqtemplate/security_proposal_mapping.mapping.js"
     }
     ]

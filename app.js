@@ -1,3 +1,7 @@
+var pathReplaceOptions = {
+    datadir:"/home/shafqat/Downloads/sqldump"
+}
+
 var _ = console.log;
 
 var config = require ( "./runconfig.js");
@@ -13,7 +17,7 @@ for(var runIndex in config.files){
 
     if (fileRunSpec.active==true){
         var webServiceUrl = config.app.url + fileRunSpec.apistem;    
-        var dataFileLocation = utils.getProperPath (fileRunSpec.file)
+        var dataFileLocation = utils.getProperPath (fileRunSpec.file, pathReplaceOptions)
         var rptfile = rptfileFunc();
         var columnList = rptfile.getColumns (dataFileLocation);
         var template = require (utils.getProperPath(fileRunSpec.template));
