@@ -10,5 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "request": "^2.83.0"
+  },
+  "dependencies": {
+    "deasync": "^0.1.10",
+    "request-promise": "^4.2.2"
   }
 }
