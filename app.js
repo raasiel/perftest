@@ -12,6 +12,7 @@ var querystring = require('querystring');
 var http = require('http');
 var fs = require('fs');
 
+
 for(var runIndex in config.files){
     var fileRunSpec = config.files[runIndex];
 
@@ -19,6 +20,7 @@ for(var runIndex in config.files){
         var webServiceUrl = config.app.url + fileRunSpec.apistem;    
         var dataFileLocation = utils.getProperPath (fileRunSpec.file, pathReplaceOptions)
         var rptfile = rptfileFunc();
+        //_ (["data file ", dataFileLocation])
         var columnList = rptfile.getColumns (dataFileLocation);
         var template = require (utils.getProperPath(fileRunSpec.template));
         var tempEng = require ("./lib/templateEngine")(template);
@@ -34,6 +36,7 @@ for(var runIndex in config.files){
 }
 
 function makeCall (url, obj){
+    _( "Calling ", url, obj )
     request.post({
         url: url,
         headers: {

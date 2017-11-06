@@ -3,7 +3,7 @@
 
     },
     app: {
-        url: "http://192.168.4.111:8081/api/"
+        url: "http://35.196.234.103:9080/api/"
     },
     files: [{
         verb: "POST",
