@@ -1,5 +1,5 @@
 var pathReplaceOptions = {
-    datadir:"/home/shafqat/Downloads/sqldump"
+    datadir:"/home/azad/sql-dump"
 }
 
 var _ = console.log;
@@ -17,28 +17,21 @@ var sql = require('mssql');
 sync.fiber(function() {
 for(var runIndex in config.files){
     var fileRunSpec = config.files[runIndex];
-
     if (fileRunSpec.active==true){
         var webServiceUrl = config.app.url + fileRunSpec.apistem;    
         var dataFileLocation = utils.getProperPath (fileRunSpec.file, pathReplaceOptions)
         var rptfile = rptfileFunc();
-        //_ (["data file ", dataFileLocation])
         var columnList = rptfile.getColumns (dataFileLocation);
         var template = require (utils.getProperPath(fileRunSpec.template));
         var tempEng = require ("./lib/templateEngine")(template);
         var reader = rptfile.start(dataFileLocation, columnList);
 
         var dataObject =  reader.next();
-
         while (dataObject!=null){
             var reqToSend = tempEng.getNew (dataObject);   
-             // makeCall (webServiceUrl, reqToSend)
-             //console.log('one');     
-             //sync.fiber(function() {
             if ( fileRunSpec["pre_http"]!=null){
                 fileRunSpec.pre_http(reqToSend)
             };
-            //console.log (reqToSend);
             
             var dataRet=  sync.await(
                 request.post({
@@ -51,11 +44,7 @@ for(var runIndex in config.files){
                }, 
                sync.defer()
             ));
-            
-             //});
-            console.log (dataRet.body);        
-            //makeCall(webServiceUrl, reqToSend);
-            //waitUntil();
+            console.log (dataRet.body);
             dataObject =  reader.next();
         }
     }
