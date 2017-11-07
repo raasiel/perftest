@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "synchronize": "^2.0.0"
   },
   "dependencies": {
     "deasync": "^0.1.10",

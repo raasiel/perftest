@@ -1,5 +1,5 @@
 var pathReplaceOptions = {
-    datadir:"D:\\10_31_SQL_Dump"
+    datadir:"/home/shafqat/Downloads/sqldump"
 }
 
 var _ = console.log;
@@ -12,29 +12,9 @@ var querystring = require('querystring');
 var http = require('http');
 var fs = require('fs');
 
-var stack = [];
+var sync = require("synchronize");
 
-function push (obj){
-    stack.push(obj)
-}
-
-function pop (){
-    var ret= stack.pop();
-    return ret;
-}
-
-function waitUntil (){
-    var blnLocked = stack.length>0;
-    while (blnLocked){
-        setTimeout(function() {
-            console.log (new Date())
-            if (stack.length==0){
-                blnLocked= false;
-            }
-        }, 500)
-    }
-}
-
+sync.fiber(function() {
 for(var runIndex in config.files){
     var fileRunSpec = config.files[runIndex];
 
@@ -52,15 +32,32 @@ for(var runIndex in config.files){
         while (dataObject!=null){
              var reqToSend = tempEng.getNew (dataObject);   
              // makeCall (webServiceUrl, reqToSend)
-            makeCall(webServiceUrl, reqToSend);
-            waitUntil();
+             //console.log('one');
+             
+             //sync.fiber(function() {
+            var dataRet=  sync.await(
+                request.post({
+                    url: webServiceUrl,
+                    headers: {
+                       "Content-Type": "application/json"
+                    },
+                    body: reqToSend,
+                    json:true,
+               }, 
+               sync.defer()
+            ));
+             //});
+
+            console.log (dataRet.body);        
+            //makeCall(webServiceUrl, reqToSend);
+            //waitUntil();
             dataObject =  reader.next();
         }
     }
 }
+});
 
 function makeCall (url, obj){
-   push(obj);
    request.post({
         url: url,
         headers: {
@@ -72,7 +69,6 @@ function makeCall (url, obj){
       console.log(error);
       console.log(JSON.stringify(response));
       console.log(body);
-      stack.pop();
    });
 }
 

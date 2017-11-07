@@ -3,8 +3,8 @@
 
     },
     app: {
-        // url: "http://35.185.227.48:9080/api/"
-        url: "http://localhost:8081/api/"
+        url: "http://35.185.227.48:9080/api/"
+        //url: "http://localhost:8081/api/"
     },
     files: [{
         verb: "POST",
@@ -24,7 +24,7 @@
         apistem: "securityclasses",
         file: "[$DATADIR$]/security_class.rpt",
         template: "[$APPDIR$]/data/reqtemplate/security_class.mapping.js", 
-        active:true
+        active:false
     }, {
         verb: "POST",
         apistem: "securities",
