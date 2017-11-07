@@ -42,11 +42,33 @@
         apistem: "campaigns",
         file: "[$DATADIR$]/campaign.rpt",
         template: "[$APPDIR$]/data/reqtemplate/campaign.mapping.js",
-        dependency: {
-            file: "[$DATADIR$]/campaign_security_mapping.rpt",
-            template: "[$APPDIR$]/data/reqtemplate/campaign_security_mapping.mapping.js"
-        },
-        active:true
+        active:true, 
+        pre_http:function ( campaignObj ){                        
+            var rptfileFunc = require ("./lib/rptfile");
+            var utils = require ('./lib/util');
+            var fileLocation = utils.getProperPath("[$DATADIR$]/campaign_security_mapping.rpt", {
+                datadir:"/home/shafqat/Downloads/sqldump"
+            });            
+            var securities = [];
+            var rptfile = rptfileFunc();
+            var columnList = rptfile.getColumns (fileLocation);
+            var reader = rptfile.start(fileLocation, columnList);
+            var dataObject =  reader.next();
+            while (dataObject!=null){
+                //console.log (dataObject["campaign_id"],campaignObj["campaign_id"] )   
+                if (dataObject["campaign_id"]==campaignObj["campaign_id"] ){ 
+                                    
+                    securities.push (dataObject["security_id"])
+                }
+                dataObject =  reader.next();
+            }
+            campaignObj.mapped_securities = securities;
+            campaignObj.campaign_start_date = new  Date (campaignObj.campaign_start_date)
+            campaignObj.campaign_end_date = new  Date (campaignObj.campaign_end_date)
+            campaignObj.campaign_run_date = new  Date (campaignObj.campaign_run_date)
+            
+            
+        }
     }, {
         verb: "POST",
         apistem: "proposals",

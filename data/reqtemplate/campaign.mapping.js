@@ -1,4 +1,5 @@
 var map = {
+    "campaign_id":"$campaign_id",
     "issuer_id": "$issuer_id",
     "campaign_title": "$campaign_title",
     "campaign_start_date": "$campaign_start_date",
