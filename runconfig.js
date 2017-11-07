@@ -1,10 +1,13 @@
-    var config = {
+
+var rootConfig = require ("./changeme.js")
+
+var config = {
     sql: {
 
     },
     app: {
         // url: "http://35.185.227.48:9080/api/"
-        url: "http://192.168.4.111:8081/api/"
+        url: rootConfig.api
     },
     files: [{
         verb: "POST",
@@ -47,7 +50,7 @@
             var rptfileFunc = require ("./lib/rptfile");
             var utils = require ('./lib/util');
             var fileLocation = utils.getProperPath("[$DATADIR$]/campaign_security_mapping.rpt", {
-                datadir:"/home/shafqat/Downloads/sqldump"
+                datadir:rootConfig.datadir
             });            
             var securities = [];
             var rptfile = rptfileFunc();

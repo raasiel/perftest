@@ -1,5 +1,7 @@
+var rootConfig = require ("./changeme.js")
+
 var pathReplaceOptions = {
-    datadir:"/home/shafqat/Downloads/sqldump"
+    datadir:rootConfig.datadir
 }
 
 var _ = console.log;
