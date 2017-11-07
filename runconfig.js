@@ -47,7 +47,7 @@
             var rptfileFunc = require ("./lib/rptfile");
             var utils = require ('./lib/util');
             var fileLocation = utils.getProperPath("[$DATADIR$]/campaign_security_mapping.rpt", {
-                datadir:"/home/azad/sql-dump"
+                datadir:"/home/shafqat/Downloads/sqldump"
             });            
             var securities = [];
             var rptfile = rptfileFunc();
@@ -74,10 +74,78 @@
         active:false
     }, {
         verb: "POST",
-        apistem: "batchSecurityProposalMapping",
+        apistem: "proposals/securityProposalMapping",
         file: "[$DATADIR$]/security_proposal_mapping.rpt",
         template: "[$APPDIR$]/data/reqtemplate/security_proposal_mapping.mapping.js",
-        active:true
+        active:true, 
+        customProvider: function ( dataFileLocation){
+            
+            
+            var colFinalSec = [];
+            var customReader = {
+                next : function() {
+                    return colFinalSec.pop();
+                },
+                isCustomProvider : true
+            }
+                       
+            
+            var rptfileFunc = require ("./lib/rptfile");
+            var rptfile = rptfileFunc();
+
+            var columnList = rptfile.getColumns (dataFileLocation);
+
+            var reader = rptfile.start(dataFileLocation, columnList);
+            var dataObject =  reader.next();
+            
+            var dicWork = {};
+            
+            while (dataObject!=null){
+                
+                var campaign = dicWork[dataObject.campaign_id];
+                if ( campaign==null){
+                    campaign={};
+                    dicWork[dataObject.campaign_id] = campaign;
+                }
+
+                var security = campaign[dataObject.security_id];
+                if ( security==null){
+                    security = {};
+                    security.proposals = [];
+                    security.proposalkeys = {};
+                    campaign[dataObject.security_id] = security;
+                }
+
+                if ( security.proposalkeys [dataObject.proposal_id]==null  ){
+                    security.proposalkeys [dataObject.proposal_id]= dataObject.proposal_id;
+                    security.proposals.push (dataObject);
+                }
+                dataObject =  reader.next();
+            }
+            
+            for( var keyCamp in dicWork){
+                var oCamp = dicWork[keyCamp];
+                for ( var keySec in oCamp){
+                    var oSec  = oCamp [keySec];
+                    var finalObj = {
+                        security_id: keySec,
+                        campaign_id:keyCamp,
+                        mappedProposals:[]
+                    }
+                    for ( var index in oSec.proposals){
+                        var oPropData = oSec.proposals[index];
+                        var finalProp = {
+                            security_id: keySec,
+                            proposal_id: parseInt( oPropData.proposal_id),
+                            sequence: parseInt (oPropData.sequence)
+                        }
+                        finalObj.mappedProposals.push (finalProp);
+                    }
+                    colFinalSec.push (finalObj);
+                }
+            }
+            return customReader;
+        }
     }
     ]
 }

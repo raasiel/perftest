@@ -1,5 +1,5 @@
 var pathReplaceOptions = {
-    datadir:"/home/azad/sql-dump"
+    datadir:"/home/shafqat/Downloads/sqldump"
 }
 
 var _ = console.log;
@@ -24,14 +24,24 @@ for(var runIndex in config.files){
         var columnList = rptfile.getColumns (dataFileLocation);
         var template = require (utils.getProperPath(fileRunSpec.template));
         var tempEng = require ("./lib/templateEngine")(template);
-        var reader = rptfile.start(dataFileLocation, columnList);
-
+        var reader = null ;
+        if ( fileRunSpec["customProvider"]!=null){
+            reader = fileRunSpec.customProvider( dataFileLocation )
+        } else {
+            reader = rptfile.start(dataFileLocation, columnList);
+        }
         var dataObject =  reader.next();
         while (dataObject!=null){
-            var reqToSend = tempEng.getNew (dataObject);   
+            var reqToSend = null;
+            if (reader["isCustomProvider"]==true){
+                reqToSend = dataObject;
+            } else {
+                reqToSend = tempEng.getNew (dataObject);                   
+            }
             if ( fileRunSpec["pre_http"]!=null){
                 fileRunSpec.pre_http(reqToSend)
             };
+            //console.log (reqToSend);
             
             var dataRet=  sync.await(
                 request.post({
