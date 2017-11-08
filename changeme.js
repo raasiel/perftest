@@ -1,5 +1,5 @@
 var config = {
-    api: "http://192.168.4.111:8081/api/",
-    datadir:"/home/shafqat/Downloads/sqldump"
+    api: "http://35.185.227.48:9080/api/",
+    datadir:"/data"
 }
 module.exports = config;

@@ -21,7 +21,7 @@ var config = {
         apistem: "funds",
         file: "[$DATADIR$]/fund.rpt",
         template: "[$APPDIR$]/data/reqtemplate/fund.mapping.js",
-        active:false
+        active:true
     }, {
         verb: "POST",
         apistem: "securityclasses",
@@ -80,7 +80,7 @@ var config = {
         apistem: "proposals/securityProposalMapping",
         file: "[$DATADIR$]/security_proposal_mapping.rpt",
         template: "[$APPDIR$]/data/reqtemplate/security_proposal_mapping.mapping.js",
-        active:true, 
+        active:false, 
         customProvider: function ( dataFileLocation){
             
             
