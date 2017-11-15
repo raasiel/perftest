@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SQLBulkImport": {
+      "commandName": "Project",
+      "commandLineArgs": "table=XCMPDATATMP_LOG data_file=D:\\10_31_SQL_Dump\\XCMPDataTMP_Log.rpt sql_connection=Server=35.185.227.48;Database=ProxyVoting;user=sa;pwd=nuarca123@"
+    }
+  }
+}

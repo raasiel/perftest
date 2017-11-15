@@ -1,0 +1,9 @@
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp1.1\SQLBulkImport.deps.json
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp1.1\SQLBulkImport.runtimeconfig.json
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp1.1\SQLBulkImport.runtimeconfig.dev.json
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp1.1\SQLBulkImport.dll
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp1.1\SQLBulkImport.pdb
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp1.1\SQLBulkImport.csprojResolveAssemblyReference.cache
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp1.1\SQLBulkImport.AssemblyInfo.cs
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp1.1\SQLBulkImport.dll
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp1.1\SQLBulkImport.pdb

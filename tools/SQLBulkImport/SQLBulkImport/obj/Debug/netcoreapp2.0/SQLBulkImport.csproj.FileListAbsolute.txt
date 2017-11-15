@@ -1,0 +1,14 @@
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp2.0\SQLBulkImport.deps.json
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp2.0\SQLBulkImport.runtimeconfig.json
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp2.0\SQLBulkImport.runtimeconfig.dev.json
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp2.0\SQLBulkImport.dll
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp2.0\SQLBulkImport.pdb
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp2.0\SQLBulkImport.csproj.CoreCompileInputs.cache
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp2.0\SQLBulkImport.AssemblyInfoInputs.cache
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp2.0\SQLBulkImport.AssemblyInfo.cs
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp2.0\SQLBulkImport.dll
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp2.0\SQLBulkImport.pdb
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp2.0\TFILETMP_LOG_schema.txt
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp2.0\XCMPDATATMP_LOG_schema.txt
+D:\rnd\SQLBulkImport\SQLBulkImport\bin\Debug\netcoreapp2.0\XCMPDATATMP_schema.txt
+D:\rnd\SQLBulkImport\SQLBulkImport\obj\Debug\netcoreapp2.0\SQLBulkImport.csprojResolveAssemblyReference.cache
